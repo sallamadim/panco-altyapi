@@ -1,0 +1,8 @@
+{
+    "token":"token",
+    "owner":"755325329005871144",
+    "mongo":"mongodb+srv://username:password@cluster0.k1tx5.mongodb.net/dbadi?retryWrites=true&w=majority",
+    "everyoneMention": false,
+    "hostedBy": true,
+    "YOUTUBE_API_KEY": "api key"
+}
