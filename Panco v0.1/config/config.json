@@ -1,0 +1,8 @@
+{
+    "token":"token",
+    "owner":"sahip id",
+    "mongo":"mongo url",
+    "everyoneMention": false,
+    "hostedBy": true,
+    "YOUTUBE_API_KEY": "yt api (lazım değil)"
+}

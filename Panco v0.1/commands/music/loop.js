@@ -1,0 +1,44 @@
+const { MessageEmbed } = require('discord.js')
+
+module.exports = {
+    name: "loop",
+    aliases: [],
+    run: async (client, message, args) => {  
+        if(!message.member.voice.channel) { return message.channel.send(new MessageEmbed().setDescription(`${client.emotes.error} | You're not in a voice channel.`)) }
+
+        if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`${client.emotes.error} | You are not in the same voice channel !`);
+
+        if (!client.player.getQueue(message)) return message.channel.send(`${client.emotes.error} | No music currently playing !`);
+
+        if(!args.join(" ").toLowerCase()) {
+            message.channel.send(new MessageEmbed().setDescription(`
+            To loop the queue type: panco loop queue
+
+            To loop the one song type: panco loop song
+            `))
+        }
+        else {
+
+
+        if(args.join(" ").toLowerCase() === "queue") {
+            if(client.player.getQueue(message).loopMode) {
+                client.player.setLoopMode(message, false)
+                return message.channel.send(new MessageEmbed().setDescription(`${client.emotes.success} | Repeat mode **disabled**.`))
+            } else {
+                client.player.setLoopMode(message, true)
+                return message.channel.send(new MessageEmbed().setDescription(`${client.emotes.success} | Repeat mode **enabled** the whole queue will be repeated endlessly.`))
+            }
+        } else {
+        if(args.join(" ").toLowerCase() === "song") {
+            if(client.player.getQueue(message).repeatMode) {
+                client.player.setRepeatMode(message, false)
+                return message.channel.send(new MessageEmbed().setDescription(`${client.emotes.success} | Repeat mode **disabled**.`))
+            } else {
+                client.player.setRepeatMode(message, true)
+                return message.channel.send(new MessageEmbed().setDescription(`${client.emotes.success} | Repeat mode **enabled** the current music will be repeated endlessly.`))
+            }
+        }
+    }
+}
+    },
+}
